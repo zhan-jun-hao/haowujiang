@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="640" viewBox="0 0 480 640" role="img" aria-label="张飞武将立绘">
+  <defs>
+    <linearGradient id="zf-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#331819"/>
+      <stop offset=".55" stop-color="#bb2f2a"/>
+      <stop offset="1" stop-color="#f4c45d"/>
+    </linearGradient>
+    <linearGradient id="zf-armor" x1="0" x2="1">
+      <stop offset="0" stop-color="#2a2523"/>
+      <stop offset="1" stop-color="#7f332f"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="640" fill="url(#zf-bg)"/>
+  <path d="M54 525c37-133 81-262 186-303 105 41 149 170 186 303-104 72-268 72-372 0z" fill="#211c1a"/>
+  <path d="M121 318c76 56 161 56 238 0l34 184c-91 58-216 58-306 0l34-184z" fill="url(#zf-armor)"/>
+  <path d="M178 336h124l-24 148h-76l-24-148z" fill="#3a2c28"/>
+  <path d="M144 216c24-74 168-74 192 0-45 46-147 46-192 0z" fill="#1c1715"/>
+  <path d="M173 188c10-55 124-55 134 0-38 32-96 32-134 0z" fill="#2b211f"/>
+  <path d="M205 145l35-52 35 52c-22 13-48 13-70 0z" fill="#f4c45d"/>
+  <path d="M194 221c0 33 18 61 46 61s46-28 46-61v-28h-92v28z" fill="#c77955"/>
+  <path d="M178 210c20-25 104-25 124 0-33 19-91 19-124 0z" fill="#111"/>
+  <circle cx="218" cy="222" r="7" fill="#111"/>
+  <circle cx="262" cy="222" r="7" fill="#111"/>
+  <path d="M210 250c22 16 42 16 60 0" fill="none" stroke="#5a1717" stroke-width="7" stroke-linecap="round"/>
+  <path d="M188 276c35 36 70 36 104 0" fill="none" stroke="#14100f" stroke-width="16" stroke-linecap="round"/>
+  <path d="M96 480l282-282" stroke="#2b2422" stroke-width="22" stroke-linecap="round"/>
+  <path d="M357 175l48-32-15 56-33-24z" fill="#f4c45d"/>
+  <path d="M106 470l43 37" stroke="#f4c45d" stroke-width="13" stroke-linecap="round"/>
+  <text x="240" y="594" fill="#ffffff" font-size="48" font-family="Microsoft YaHei, sans-serif" font-weight="800" text-anchor="middle">张飞</text>
+</svg>

@@ -1,0 +1,74 @@
+server:
+  port: 8189
+
+spring:
+  application:
+    name: sanguosha-backend
+  config:
+    import:
+      - optional:nacos:application.yml
+      - optional:nacos:application.yaml
+      - optional:nacos:${spring.application.name}
+      - optional:nacos:${spring.application.name}.yml
+      - optional:nacos:${spring.application.name}.yaml
+
+  cloud:
+    nacos:
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
+      config:
+        namespace: ${NACOS_NAMESPACE:}
+        group: ${NACOS_GROUP:DEFAULT_GROUP}
+        refresh-enabled: true
+      discovery:
+        enabled: false
+        namespace: ${NACOS_NAMESPACE:}
+        group: ${NACOS_GROUP:DEFAULT_GROUP}
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      properties:
+        max.block.ms: 5000
+        request.timeout.ms: 5000
+    consumer:
+      auto-offset-reset: earliest
+      properties:
+        session.timeout.ms: 15000
+    admin:
+      fail-fast: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/haowujiang?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+
+  data:
+    redis:
+      host: localhost
+      port: 6500
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+
+app:
+  ai:
+    provider: langchain4j
+  kafka:
+    enabled: true
+  seckill:
+    # Sentinel 流控规则从 Nacos 读取的 data-id
+    sentinel-flow-data-id: ${SENTINEL_FLOW_DATA_ID:sanguosha-backend-flow-rules}
+
+haowujiang:
+  qdrant:
+    host: localhost
+    port: 6334
+    collection-name: haoclass_customer_service

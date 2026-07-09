@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="640" viewBox="0 0 480 640" role="img" aria-label="赵云武将立绘">
+  <defs>
+    <linearGradient id="zy-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1f3838"/>
+      <stop offset=".5" stop-color="#2f7d68"/>
+      <stop offset="1" stop-color="#e9d18a"/>
+    </linearGradient>
+    <linearGradient id="zy-armor" x1="0" x2="1">
+      <stop offset="0" stop-color="#edf5f4"/>
+      <stop offset="1" stop-color="#7da5a2"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="640" fill="url(#zy-bg)"/>
+  <path d="M54 518C96 404 111 253 238 206c126 47 145 198 188 312-104 78-265 80-372 0z" fill="#203938"/>
+  <path d="M143 248c31-54 66-81 97-81 33 0 68 28 100 83-44 28-143 27-197-2z" fill="#f0d8aa"/>
+  <path d="M135 306c72 40 138 40 211 0l28 190c-85 48-181 47-268 0l29-190z" fill="url(#zy-armor)"/>
+  <path d="M176 318h128l-20 156h-88l-20-156z" fill="#f9fbfa"/>
+  <path d="M198 334l42 38 42-38" fill="none" stroke="#2f7d68" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M150 211c26-58 153-58 180 0-54 27-126 27-180 0z" fill="#f4f7f6"/>
+  <path d="M169 181c14-51 127-50 142 0-47 20-94 20-142 0z" fill="#dfeeed"/>
+  <path d="M197 150l43-62 43 62c-28 14-58 14-86 0z" fill="#eef8f8"/>
+  <path d="M210 216c0 18 12 33 30 33s30-15 30-33v-27h-60v27z" fill="#f2c69f"/>
+  <circle cx="220" cy="208" r="6" fill="#222"/>
+  <circle cx="260" cy="208" r="6" fill="#222"/>
+  <path d="M218 234c18 10 33 10 46 0" fill="none" stroke="#8c3b35" stroke-width="5" stroke-linecap="round"/>
+  <path d="M78 514L383 164" stroke="#d7dde0" stroke-width="18" stroke-linecap="round"/>
+  <path d="M374 156l38-41 9 54-47-13z" fill="#f4c45d"/>
+  <path d="M91 496l35 31" stroke="#f4c45d" stroke-width="12" stroke-linecap="round"/>
+  <text x="240" y="594" fill="#ffffff" font-size="48" font-family="Microsoft YaHei, sans-serif" font-weight="800" text-anchor="middle">赵云</text>
+</svg>
