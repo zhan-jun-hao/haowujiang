@@ -1,6 +1,6 @@
 package com.haowujiang.sanguosha.domain.service;
 
-import com.haowujiang.sanguosha.domain.enums.CardKind;
+import com.haowujiang.sanguosha.infrastructure.enums.CardKind;
 import com.haowujiang.sanguosha.domain.model.BattleActor;
 import com.haowujiang.sanguosha.domain.model.BattleCard;
 import com.haowujiang.sanguosha.domain.model.BattleState;

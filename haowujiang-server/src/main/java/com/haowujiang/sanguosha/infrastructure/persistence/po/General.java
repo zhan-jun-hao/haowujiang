@@ -2,7 +2,7 @@ package com.haowujiang.sanguosha.infrastructure.persistence.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.haowujiang.sanguosha.domain.enums.GeneralUnlockSource;
+import com.haowujiang.sanguosha.infrastructure.enums.GeneralUnlockSource;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

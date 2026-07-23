@@ -1,6 +1,6 @@
 package com.haowujiang.sanguosha.domain.model;
 
-import com.haowujiang.sanguosha.domain.enums.PlayerAction;
+import com.haowujiang.sanguosha.infrastructure.enums.PlayerAction;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;

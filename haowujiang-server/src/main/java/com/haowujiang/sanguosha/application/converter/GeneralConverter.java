@@ -1,8 +1,8 @@
 package com.haowujiang.sanguosha.application.converter;
 
-import com.haowujiang.sanguosha.application.vo.general.response.GeneralBasicVo;
-import com.haowujiang.sanguosha.application.vo.general.response.GeneralDetailVo;
-import com.haowujiang.sanguosha.application.vo.general.response.MyGeneralRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.GeneralBasicVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.GeneralDetailVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.MyGeneralRespVo;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.General;
 import java.util.List;
 import org.mapstruct.Mapper;

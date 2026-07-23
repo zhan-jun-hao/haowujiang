@@ -2,8 +2,8 @@ package com.haowujiang.sanguosha.application.service.impl;
 
 import com.haowujiang.sanguosha.application.converter.UserConverter;
 import com.haowujiang.sanguosha.application.service.AuthApplicationService;
-import com.haowujiang.sanguosha.application.vo.auth.request.UserLoginReqVo;
-import com.haowujiang.sanguosha.application.vo.auth.response.UserLoginRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.auth.request.UserLoginReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.auth.response.UserLoginRespVo;
 import com.haowujiang.sanguosha.domain.exception.BusinessException;
 import com.haowujiang.sanguosha.domain.service.UserDomainService;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.User;
@@ -24,6 +24,7 @@ public class AuthApplicationServiceImpl implements AuthApplicationService {
 
     @Override
     public UserLoginRespVo login(UserLoginReqVo reqVo) {
+
         User user = userDomainService.findExistUserByPhone(reqVo.getPhone());
         if (Objects.isNull(user) || !passwordMatches(reqVo.getPassword(), user.getPassword())) {
             throw new BusinessException("手机号或密码错误");
@@ -33,8 +34,10 @@ public class AuthApplicationServiceImpl implements AuthApplicationService {
         }
 
         UserLoginRespVo respVo = new UserLoginRespVo();
-        respVo.setToken(jwtTokenProvider.createToken(user.getId(), user.getRole()));
-        respVo.setUserBasicVo(UserConverter.INSTANCE.poToBasicVo(user));
+        String token = jwtTokenProvider.createToken(user.getId(), user.getRole());
+        System.out.println("token:" + token);
+        respVo.setToken(token);
+        respVo.setAdminUserBasicVo(UserConverter.INSTANCE.poToBasicVo(user));
         return respVo;
     }
 

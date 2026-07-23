@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
- * 对战事件总线 —— 在游戏的各个{@link com.haowujiang.sanguosha.domain.enums.BattleTiming 时机窗口}
+ * 对战事件总线 —— 在游戏的各个{@link com.haowujiang.sanguosha.infrastructure.enums.BattleTiming 时机窗口}
  * 发布 {@link BattleEvent}，分发给匹配的 {@link TriggerSkill 触发技}。
  *
  * <p><b>工作流程：</b></p>

@@ -1,7 +1,7 @@
 package com.haowujiang.sanguosha.application.converter;
 
-import com.haowujiang.sanguosha.application.vo.rag.response.RagDocumentBasicVo;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.RagDocument;
+import com.haowujiang.sanguosha.interfaces.vo.rag.response.RagDocumentBasicVo;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-07-10T01:47:01+0800",
+    date = "2026-07-21T20:40:18+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.15 (Oracle Corporation)"
 )
 public class RagDocumentConverterImpl implements RagDocumentConverter {

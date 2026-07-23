@@ -1,10 +1,10 @@
 package com.haowujiang.sanguosha.application.converter;
 
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleActorRespVo;
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleCardRespVo;
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleLogRespVo;
-import com.haowujiang.sanguosha.application.vo.battle.response.BattlePendingResponseRespVo;
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleActorRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleCardRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleLogRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattlePendingResponseRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleRespVo;
 import com.haowujiang.sanguosha.domain.model.BattleActor;
 import com.haowujiang.sanguosha.domain.model.BattleCard;
 import com.haowujiang.sanguosha.domain.model.BattleLog;

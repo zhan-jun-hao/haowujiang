@@ -1,7 +1,7 @@
 package com.haowujiang.sanguosha.application.service;
 
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleRespVo;
-import com.haowujiang.sanguosha.domain.enums.PlayerAction;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleRespVo;
+import com.haowujiang.sanguosha.infrastructure.enums.PlayerAction;
 
 /**
  * 对战应用服务接口。

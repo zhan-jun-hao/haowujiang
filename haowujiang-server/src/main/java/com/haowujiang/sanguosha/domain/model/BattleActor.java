@@ -1,6 +1,6 @@
 package com.haowujiang.sanguosha.domain.model;
 
-import com.haowujiang.sanguosha.domain.enums.Side;
+import com.haowujiang.sanguosha.infrastructure.enums.Side;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.General;
 import java.util.ArrayList;
 import java.util.List;

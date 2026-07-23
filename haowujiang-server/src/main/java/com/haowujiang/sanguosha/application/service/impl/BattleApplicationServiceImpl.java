@@ -2,8 +2,8 @@ package com.haowujiang.sanguosha.application.service.impl;
 
 import com.haowujiang.sanguosha.application.converter.BattleConverter;
 import com.haowujiang.sanguosha.application.service.BattleApplicationService;
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleRespVo;
-import com.haowujiang.sanguosha.domain.enums.PlayerAction;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleRespVo;
+import com.haowujiang.sanguosha.infrastructure.enums.PlayerAction;
 import com.haowujiang.sanguosha.domain.service.BattleDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

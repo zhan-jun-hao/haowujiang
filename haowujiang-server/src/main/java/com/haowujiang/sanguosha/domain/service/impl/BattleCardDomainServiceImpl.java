@@ -1,10 +1,10 @@
 package com.haowujiang.sanguosha.domain.service.impl;
 
 import cn.hutool.core.util.IdUtil;
-import com.haowujiang.sanguosha.domain.enums.BattleLogType;
-import com.haowujiang.sanguosha.domain.enums.BattleTiming;
-import com.haowujiang.sanguosha.domain.enums.CardKind;
-import com.haowujiang.sanguosha.domain.enums.Side;
+import com.haowujiang.sanguosha.infrastructure.enums.BattleLogType;
+import com.haowujiang.sanguosha.infrastructure.enums.BattleTiming;
+import com.haowujiang.sanguosha.infrastructure.enums.CardKind;
+import com.haowujiang.sanguosha.infrastructure.enums.Side;
 import com.haowujiang.sanguosha.domain.exception.BusinessException;
 import com.haowujiang.sanguosha.domain.model.*;
 import com.haowujiang.sanguosha.domain.service.BattleCardDomainService;

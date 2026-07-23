@@ -1,11 +1,15 @@
 package com.haowujiang.sanguosha.domain.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.haowujiang.sanguosha.domain.exception.BusinessException;
 import com.haowujiang.sanguosha.domain.service.GeneralDomainService;
 import com.haowujiang.sanguosha.infrastructure.persistence.mapper.GeneralMapper;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.General;
+import com.haowujiang.sanguosha.interfaces.vo.general.request.GeneralPageQueryReqVo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,10 +24,13 @@ public class GeneralDomainServiceImpl implements GeneralDomainService {
     private final GeneralMapper generalMapper;
 
     @Override
-    public List<General> listGenerals() {
+    public IPage<General> pageQuery(GeneralPageQueryReqVo query) {
         LambdaQueryWrapper<General> wrapper = Wrappers.lambdaQuery(General.class)
-                .eq(General::getDeleted, 0);
-        return new ArrayList<>(generalMapper.selectList(wrapper));
+                .eq(General::getDeleted, 0)
+                .like(StrUtil.isNotBlank(query.getName()), General::getName, query.getName())
+                .eq(StrUtil.isNotBlank(query.getCamp()), General::getCamp, query.getCamp())
+                .orderByDesc(General::getCreateTime);
+        return generalMapper.selectPage(new Page<>(query.getCurrent(), query.getSize()), wrapper);
     }
 
     @Override

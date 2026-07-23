@@ -2,7 +2,9 @@ package com.haowujiang.sanguosha.domain.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.haowujiang.sanguosha.domain.enums.SeckillOrderStatus;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.haowujiang.sanguosha.infrastructure.enums.SeckillOrderStatus;
 import com.haowujiang.sanguosha.domain.service.SeckillOrderDomainService;
 import com.haowujiang.sanguosha.infrastructure.persistence.mapper.SeckillOrderMapper;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.SeckillOrder;
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class SeckillOrderDomainServiceImpl implements SeckillOrderDomainService {
+public class SeckillOrderDomainServiceImpl extends ServiceImpl<SeckillOrderMapper, SeckillOrder> implements SeckillOrderDomainService {
 
     private final SeckillOrderMapper seckillOrderMapper;
 
@@ -26,15 +28,6 @@ public class SeckillOrderDomainServiceImpl implements SeckillOrderDomainService 
                 .eq(SeckillOrder::getGeneralCode, generalCode)
                 .orderByDesc(SeckillOrder::getCreateTime);
         return seckillOrderMapper.selectList(wrapper);
-    }
-
-    @Override
-    public boolean existsByUserIdAndGeneralCode(Long userId, String generalCode) {
-        LambdaQueryWrapper<SeckillOrder> wrapper = Wrappers.lambdaQuery(SeckillOrder.class)
-                .eq(SeckillOrder::getDeleted, 0)
-                .eq(SeckillOrder::getUserId, userId)
-                .eq(SeckillOrder::getGeneralCode, generalCode);
-        return seckillOrderMapper.selectCount(wrapper) > 0;
     }
 
     @Override

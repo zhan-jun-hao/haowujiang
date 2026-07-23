@@ -1,7 +1,7 @@
 package com.haowujiang.sanguosha.infrastructure.security.filter;
 
 import com.haowujiang.sanguosha.infrastructure.security.context.HeaderAuthenticatedUser;
-import com.haowujiang.sanguosha.infrastructure.security.context.SecurityRole;
+import com.haowujiang.sanguosha.infrastructure.enums.SecurityRole;
 import com.haowujiang.sanguosha.infrastructure.security.jwt.JwtTokenProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

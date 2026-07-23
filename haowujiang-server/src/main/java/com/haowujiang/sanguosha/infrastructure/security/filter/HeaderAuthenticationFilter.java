@@ -2,7 +2,7 @@ package com.haowujiang.sanguosha.infrastructure.security.filter;
 
 import com.haowujiang.sanguosha.infrastructure.security.constants.UserContextHeaders;
 import com.haowujiang.sanguosha.infrastructure.security.context.HeaderAuthenticatedUser;
-import com.haowujiang.sanguosha.infrastructure.security.context.SecurityRole;
+import com.haowujiang.sanguosha.infrastructure.enums.SecurityRole;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 public class HeaderAuthenticationFilter extends OncePerRequestFilter {
@@ -34,6 +33,7 @@ public class HeaderAuthenticationFilter extends OncePerRequestFilter {
     private void authenticate(HttpServletRequest request) {
         String userIdHeader = request.getHeader(UserContextHeaders.USER_ID);
         String roleHeader = request.getHeader(UserContextHeaders.USER_ROLE);
+        String traceId = request.getHeader(UserContextHeaders.TRACE_ID);
         if (!StringUtils.hasText(userIdHeader) || !StringUtils.hasText(roleHeader)) {
             return;
         }
@@ -45,7 +45,7 @@ public class HeaderAuthenticationFilter extends OncePerRequestFilter {
             if (securityRole == null) {
                 return;
             }
-            HeaderAuthenticatedUser principal = new HeaderAuthenticatedUser(userId, role);
+            HeaderAuthenticatedUser principal = new HeaderAuthenticatedUser(userId, role, traceId);
             UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(
                             principal,

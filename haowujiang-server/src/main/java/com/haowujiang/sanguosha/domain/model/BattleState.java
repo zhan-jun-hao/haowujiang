@@ -1,7 +1,7 @@
 package com.haowujiang.sanguosha.domain.model;
 
-import com.haowujiang.sanguosha.domain.enums.Side;
-import com.haowujiang.sanguosha.domain.enums.TurnPhase;
+import com.haowujiang.sanguosha.infrastructure.enums.Side;
+import com.haowujiang.sanguosha.infrastructure.enums.TurnPhase;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;

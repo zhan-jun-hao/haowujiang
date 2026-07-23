@@ -21,4 +21,10 @@ public class HeaderAuthenticatedUser implements AuthenticatedUser {
      * 用户角色
      */
     private Integer role;
+
+    /**
+     * traceId
+     */
+    private String traceId;
+
 }

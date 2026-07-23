@@ -1,14 +1,14 @@
 package com.haowujiang.sanguosha.application.converter;
 
-import com.haowujiang.sanguosha.application.vo.general.response.GeneralBasicVo;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.General;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.GeneralBasicVo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-07-10T01:47:01+0800",
+    date = "2026-07-21T20:40:17+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.15 (Oracle Corporation)"
 )
 public class GeneralConverterImpl implements GeneralConverter {

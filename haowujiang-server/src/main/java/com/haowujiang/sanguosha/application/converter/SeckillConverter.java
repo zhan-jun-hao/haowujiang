@@ -1,19 +1,8 @@
 package com.haowujiang.sanguosha.application.converter;
 
-import com.haowujiang.sanguosha.application.vo.seckill.response.SeckillEventRespVo;
-import com.haowujiang.sanguosha.application.vo.seckill.response.SeckillOrderBasicVo;
-import com.haowujiang.sanguosha.application.vo.seckill.response.SeckillResultRespVo;
-import com.haowujiang.sanguosha.application.vo.seckill.response.SeckillStateRespVo;
-import com.haowujiang.sanguosha.domain.model.SeckillEvent;
-import com.haowujiang.sanguosha.domain.model.SeckillResult;
-import com.haowujiang.sanguosha.domain.model.SeckillState;
-import com.haowujiang.sanguosha.infrastructure.persistence.po.SeckillOrder;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
+import com.haowujiang.sanguosha.infrastructure.persistence.po.SeckillActivity;
+import com.haowujiang.sanguosha.interfaces.vo.seckill.response.SeckillActivityRespVo;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
@@ -21,53 +10,42 @@ public interface SeckillConverter {
 
     SeckillConverter INSTANCE = Mappers.getMapper(SeckillConverter.class);
 
-    DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-    default SeckillStateRespVo modelToVo(SeckillState state) {
-        if (state == null) {
+    /**
+     * 秒杀活动 PO → VO
+     */
+    default SeckillActivityRespVo activityToVo(SeckillActivity activity) {
+        if (activity == null) {
             return null;
         }
-        SeckillStateRespVo vo = new SeckillStateRespVo();
-        vo.setTargetGeneralId(state.getTargetGeneralId());
-        vo.setStock(state.getStock());
-        vo.setTotal(state.getTotal());
-        vo.setClaimedUserIds(new ArrayList<>(state.getClaimedUserIds()));
-        vo.setOrders(state.getOrders().stream()
-                .map(this::orderToVo)
-                .collect(Collectors.toCollection(ArrayList::new)));
-        vo.setEvents(state.getEvents().stream()
-                .map(this::eventToVo)
-                .collect(Collectors.toCollection(ArrayList::new)));
+        SeckillActivityRespVo vo = new SeckillActivityRespVo();
+        vo.setId(activity.getId());
+        vo.setActivityCode(activity.getActivityCode());
+        vo.setActivityName(activity.getActivityName());
+        vo.setGeneralCode(activity.getGeneralCode());
+        vo.setGeneralName(activity.getGeneralName());
+        vo.setStock(activity.getStock());
+        vo.setAvailableStock(activity.getAvailableStock());
+        vo.setLimitPerUser(activity.getLimitPerUser());
+        vo.setStartTime(activity.getStartTime());
+        vo.setEndTime(activity.getEndTime());
+        vo.setStatus(activity.getStatus());
+        vo.setStatusText(statusText(activity.getStatus()));
+        vo.setCreatedBy(activity.getCreatedBy());
+        vo.setCreatedTime(activity.getCreatedTime());
+        vo.setUpdatedTime(activity.getUpdatedTime());
         return vo;
     }
 
-    default SeckillResultRespVo modelToVo(SeckillResult result) {
-        if (result == null) {
-            return null;
+    default String statusText(Integer status) {
+        if (status == null) {
+            return "未知";
         }
-        SeckillResultRespVo vo = new SeckillResultRespVo();
-        vo.setOk(result.isOk());
-        vo.setTitle(result.getTitle());
-        vo.setMessage(result.getMessage());
-        vo.setSteps(new ArrayList<>(result.getSteps()));
-        vo.setState(modelToVo(result.getState()));
-        return vo;
-    }
-
-    @Mapping(target = "id", expression = "java(valueOf(order.getId()))")
-    @Mapping(target = "generalId", source = "generalCode")
-    @Mapping(target = "status", expression = "java(order.getStatus() == null ? \"\" : order.getStatus().name().toLowerCase())")
-    @Mapping(target = "createdAt", expression = "java(format(order.getCreateTime()))")
-    SeckillOrderBasicVo orderToVo(SeckillOrder order);
-
-    @Mapping(target = "createdAt", expression = "java(format(event.getCreatedAt()))")
-    SeckillEventRespVo eventToVo(SeckillEvent event);
-
-    default String valueOf(Long value) {
-        return value == null ? "" : String.valueOf(value);
-    }
-
-    default String format(LocalDateTime time) {
-        return time == null ? "" : FORMATTER.format(time);
+        return switch (status) {
+            case 0 -> "待开始";
+            case 1 -> "进行中";
+            case 2 -> "已结束";
+            case 3 -> "已下架";
+            default -> "未知";
+        };
     }
 }

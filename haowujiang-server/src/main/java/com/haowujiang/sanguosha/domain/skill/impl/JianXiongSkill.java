@@ -1,6 +1,6 @@
 package com.haowujiang.sanguosha.domain.skill.impl;
 
-import com.haowujiang.sanguosha.domain.enums.BattleTiming;
+import com.haowujiang.sanguosha.infrastructure.enums.BattleTiming;
 import com.haowujiang.sanguosha.domain.model.BattleActor;
 import com.haowujiang.sanguosha.domain.model.BattleCard;
 import com.haowujiang.sanguosha.domain.model.BattleContext;

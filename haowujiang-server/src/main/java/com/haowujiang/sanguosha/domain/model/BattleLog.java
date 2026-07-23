@@ -1,6 +1,6 @@
 package com.haowujiang.sanguosha.domain.model;
 
-import com.haowujiang.sanguosha.domain.enums.BattleLogType;
+import com.haowujiang.sanguosha.infrastructure.enums.BattleLogType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

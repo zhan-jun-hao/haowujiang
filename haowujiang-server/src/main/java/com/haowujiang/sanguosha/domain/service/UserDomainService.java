@@ -1,6 +1,9 @@
 package com.haowujiang.sanguosha.domain.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.User;
+import com.haowujiang.sanguosha.interfaces.vo.user.request.AdminUserPageQueryReqVo;
+
 import java.util.List;
 
 /**
@@ -15,6 +18,13 @@ public interface UserDomainService {
      * @return 用户持久化对象
      */
     User getNormalUserById(Long id);
+
+    /**
+     * 分页查询用户
+     * @param pageQuery
+     * @return
+     */
+    IPage<User> pageQuery(AdminUserPageQueryReqVo pageQuery);
 
     /**
      * 查询未删除用户列表

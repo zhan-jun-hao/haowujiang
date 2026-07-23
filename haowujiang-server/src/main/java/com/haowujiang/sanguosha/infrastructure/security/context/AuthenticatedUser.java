@@ -5,4 +5,6 @@ public interface AuthenticatedUser {
     Long getUserId();
 
     Integer getRole();
+
+    String getTraceId();
 }

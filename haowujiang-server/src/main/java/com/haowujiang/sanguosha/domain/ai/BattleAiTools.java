@@ -1,8 +1,8 @@
 package com.haowujiang.sanguosha.domain.ai;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.haowujiang.sanguosha.domain.enums.CardKind;
-import com.haowujiang.sanguosha.domain.enums.PlayerAction;
+import com.haowujiang.sanguosha.infrastructure.enums.CardKind;
+import com.haowujiang.sanguosha.infrastructure.enums.PlayerAction;
 import com.haowujiang.sanguosha.domain.model.BattleActor;
 import com.haowujiang.sanguosha.domain.model.BattleCard;
 import com.haowujiang.sanguosha.domain.model.BattleState;

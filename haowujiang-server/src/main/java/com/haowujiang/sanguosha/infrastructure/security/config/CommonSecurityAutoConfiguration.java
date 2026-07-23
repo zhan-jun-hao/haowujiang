@@ -97,6 +97,7 @@ public class CommonSecurityAutoConfiguration {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/actuator/health", "/error", "/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/client/generals/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/client/seckill/activities").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/client/seckill/generals/*/state").permitAll()
                         .requestMatchers("/api/*/admin/**", "/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()

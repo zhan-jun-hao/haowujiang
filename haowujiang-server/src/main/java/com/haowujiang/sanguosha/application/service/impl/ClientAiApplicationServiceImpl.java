@@ -2,9 +2,9 @@ package com.haowujiang.sanguosha.application.service.impl;
 
 import cn.hutool.core.util.IdUtil;
 import com.haowujiang.sanguosha.application.service.ClientAiApplicationService;
-import com.haowujiang.sanguosha.application.vo.ai.request.ClientAiChatReqVo;
-import com.haowujiang.sanguosha.application.vo.ai.response.ClientAiChatRespVo;
-import com.haowujiang.sanguosha.application.vo.ai.response.RagReferenceBasicVo;
+import com.haowujiang.sanguosha.interfaces.vo.ai.request.ClientAiChatReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.ai.response.ClientAiChatRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.ai.response.RagReferenceBasicVo;
 import com.haowujiang.sanguosha.domain.exception.BusinessException;
 import com.haowujiang.sanguosha.infrastructure.config.HaowujiangAiProperties;
 import dev.langchain4j.data.embedding.Embedding;

@@ -1,7 +1,7 @@
 package com.haowujiang.sanguosha.domain.model;
 
-import com.haowujiang.sanguosha.domain.enums.PendingResponseType;
-import com.haowujiang.sanguosha.domain.enums.Side;
+import com.haowujiang.sanguosha.infrastructure.enums.PendingResponseType;
+import com.haowujiang.sanguosha.infrastructure.enums.Side;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

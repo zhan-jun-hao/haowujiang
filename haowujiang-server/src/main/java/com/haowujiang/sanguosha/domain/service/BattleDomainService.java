@@ -1,6 +1,6 @@
 package com.haowujiang.sanguosha.domain.service;
 
-import com.haowujiang.sanguosha.domain.enums.PlayerAction;
+import com.haowujiang.sanguosha.infrastructure.enums.PlayerAction;
 import com.haowujiang.sanguosha.domain.model.BattleState;
 
 /**

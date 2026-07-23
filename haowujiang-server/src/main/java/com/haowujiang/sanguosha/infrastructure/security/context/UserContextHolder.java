@@ -1,5 +1,7 @@
 package com.haowujiang.sanguosha.infrastructure.security.context;
 
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import com.haowujiang.sanguosha.domain.exception.BusinessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +33,17 @@ public final class UserContextHolder {
             throw new BusinessException("User is not logged in");
         }
         return userId;
+    }
+
+    public static String getTraceId() {
+        AuthenticatedUser user = getUser();
+        if (user == null) {
+            throw new BusinessException("User is not logged in");
+        }
+        if (StrUtil.isNotBlank(user.getTraceId())) {
+            return user.getTraceId();
+        }
+        return IdUtil.randomUUID().replace("-", "");
     }
 
     public static Integer getRole() {

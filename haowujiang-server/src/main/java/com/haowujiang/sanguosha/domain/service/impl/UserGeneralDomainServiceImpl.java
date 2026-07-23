@@ -1,10 +1,13 @@
 package com.haowujiang.sanguosha.domain.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.haowujiang.sanguosha.domain.service.UserGeneralDomainService;
 import com.haowujiang.sanguosha.infrastructure.persistence.mapper.UserGeneralMapper;
 import com.haowujiang.sanguosha.infrastructure.persistence.po.UserGeneral;
+import com.haowujiang.sanguosha.interfaces.vo.general.request.UserGeneralPageQueryReqVo;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +35,15 @@ public class UserGeneralDomainServiceImpl implements UserGeneralDomainService {
                 .eq(UserGeneral::getUserId, userId)
                 .eq(UserGeneral::getGeneralCode, generalCode);
         return userGeneralMapper.selectCount(wrapper) > 0;
+    }
+
+    @Override
+    public IPage<UserGeneral> pageQuery(Long userId, UserGeneralPageQueryReqVo query) {
+        LambdaQueryWrapper<UserGeneral> wrapper = Wrappers.lambdaQuery(UserGeneral.class)
+                .eq(UserGeneral::getDeleted, 0)
+                .eq(UserGeneral::getUserId, userId)
+                .orderByDesc(UserGeneral::getCreateTime);
+        return userGeneralMapper.selectPage(new Page<>(query.getCurrent(), query.getSize()), wrapper);
     }
 
     @Override

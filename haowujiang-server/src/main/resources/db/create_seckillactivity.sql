@@ -1,0 +1,22 @@
+CREATE TABLE `seckillactivity` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `activityCode` varchar(64) NOT NULL COMMENT '活动编码（SK + 时间戳）',
+  `activityName` varchar(128) NOT NULL COMMENT '活动名称',
+  `generalCode` varchar(32) NOT NULL COMMENT '武将编码',
+  `generalName` varchar(64) NOT NULL COMMENT '武将名',
+  `stock` int NOT NULL DEFAULT '0' COMMENT '秒杀总库存',
+  `availableStock` int NOT NULL DEFAULT '0' COMMENT '剩余库存',
+  `limitPerUser` int NOT NULL DEFAULT '1' COMMENT '每人限购数量',
+  `startTime` datetime NOT NULL COMMENT '秒杀开始时间',
+  `endTime` datetime NOT NULL COMMENT '秒杀结束时间',
+  `status` tinyint NOT NULL DEFAULT '0' COMMENT '状态：0-待开始 1-进行中 2-已结束 3-已下架',
+  `createdBy` varchar(64) DEFAULT NULL COMMENT '创建人',
+  `createdTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updatedTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted` tinyint DEFAULT '0' COMMENT '逻辑删除：0-未删除 1-已删除',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_activity_code` (`activityCode`),
+  KEY `idx_general_code` (`generalCode`),
+  KEY `idx_status` (`status`),
+  KEY `idx_time` (`startTime`,`endTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='秒杀活动表';

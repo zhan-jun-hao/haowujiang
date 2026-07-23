@@ -1,9 +1,9 @@
 package com.haowujiang.sanguosha.interfaces.controller.client;
 
 import com.haowujiang.sanguosha.application.service.BattleApplicationService;
-import com.haowujiang.sanguosha.application.vo.battle.request.BattleActionReqVo;
-import com.haowujiang.sanguosha.application.vo.battle.request.CreateBattleReqVo;
-import com.haowujiang.sanguosha.application.vo.battle.response.BattleRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.request.BattleActionReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.request.CreateBattleReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.battle.response.BattleRespVo;
 import com.haowujiang.sanguosha.infrastructure.common.Result;
 import com.haowujiang.sanguosha.infrastructure.security.context.UserContextHolder;
 import jakarta.validation.Valid;

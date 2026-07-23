@@ -1,10 +1,14 @@
 package com.haowujiang.sanguosha.application.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haowujiang.sanguosha.application.converter.GeneralConverter;
 import com.haowujiang.sanguosha.application.service.GeneralApplicationService;
-import com.haowujiang.sanguosha.application.vo.general.response.GeneralBasicVo;
-import com.haowujiang.sanguosha.application.vo.general.response.GeneralDetailVo;
-import com.haowujiang.sanguosha.application.vo.general.response.MyGeneralRespVo;
+import com.haowujiang.sanguosha.infrastructure.common.PageResult;
+import com.haowujiang.sanguosha.interfaces.vo.general.request.GeneralPageQueryReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.request.UserGeneralPageQueryReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.GeneralBasicVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.GeneralDetailVo;
+import com.haowujiang.sanguosha.interfaces.vo.general.response.MyGeneralRespVo;
 import com.haowujiang.sanguosha.domain.service.GeneralDomainService;
 
 import java.util.ArrayList;
@@ -26,8 +30,10 @@ public class GeneralApplicationServiceImpl implements GeneralApplicationService 
     private final UserGeneralDomainService userGeneralDomainService;
 
     @Override
-    public List<GeneralBasicVo> listGenerals() {
-        return GeneralConverter.INSTANCE.poToBasicVo(generalDomainService.listGenerals());
+    public PageResult<GeneralBasicVo> listGenerals(GeneralPageQueryReqVo query) {
+        IPage<General> page = generalDomainService.pageQuery(query);
+        List<GeneralBasicVo> records = GeneralConverter.INSTANCE.poToBasicVo(page.getRecords());
+        return PageResult.success(page, records);
     }
 
     @Override
@@ -36,17 +42,19 @@ public class GeneralApplicationServiceImpl implements GeneralApplicationService 
     }
 
     @Override
-    public List<MyGeneralRespVo> listOwnedGenerals(Long userId) {
-        List<UserGeneral> userGenerals = userGeneralDomainService.findListByUserId(userId);
+    public PageResult<MyGeneralRespVo> listOwnedGenerals(Long userId, UserGeneralPageQueryReqVo query) {
+        IPage<UserGeneral> userGeneralPage = userGeneralDomainService.pageQuery(userId, query);
+        List<UserGeneral> userGenerals = userGeneralPage.getRecords();
         if (userGenerals.isEmpty()) {
-            return new ArrayList<>();
+            return PageResult.success(userGeneralPage, new ArrayList<>());
         }
         Set<String> codes = userGenerals.stream().map(UserGeneral::getGeneralCode).collect(Collectors.toSet());
 
-        return generalDomainService.listOwnedGeneralsByCode(codes)
+        List<MyGeneralRespVo> records = generalDomainService.listOwnedGeneralsByCode(codes)
                 .stream()
                 .map(GeneralConverter.INSTANCE::poToMyGeneralRespVo)
                 .collect(Collectors.toCollection(ArrayList::new));
+        return PageResult.success(userGeneralPage, records);
     }
 
     @Override

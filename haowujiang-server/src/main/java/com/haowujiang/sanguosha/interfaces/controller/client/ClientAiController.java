@@ -1,8 +1,8 @@
 package com.haowujiang.sanguosha.interfaces.controller.client;
 
 import com.haowujiang.sanguosha.application.service.ClientAiApplicationService;
-import com.haowujiang.sanguosha.application.vo.ai.request.ClientAiChatReqVo;
-import com.haowujiang.sanguosha.application.vo.ai.response.ClientAiChatRespVo;
+import com.haowujiang.sanguosha.interfaces.vo.ai.request.ClientAiChatReqVo;
+import com.haowujiang.sanguosha.interfaces.vo.ai.response.ClientAiChatRespVo;
 import com.haowujiang.sanguosha.infrastructure.common.Result;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
